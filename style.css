@@ -1,13 +1,19 @@
 /* Give the whole page a soft background */
+
+body {
+  color: rgb(10, 145, 17);
+}
+
+
 body {
   background-color: #f0f8ff; /* light blue-ish */
   font-family: Arial, sans-serif;
-  color: #333;
+  color: #000000;
 }
 
 /* Style your header */
 header {
-  background-color: #333;
+  background-color: #2e81a4bd;
   color: white;
   padding: 1em;
   text-align: center;
@@ -16,9 +22,11 @@ header {
 /* Nav links */
 nav a {
   color: #ffcc00;
-  margin: 0 15px;
-  text-decoration: none;
+  margin: 0 18px;
+  text-decoration: none
 }
+
+
 
 /* Main sections */
 section {
@@ -31,7 +39,7 @@ section {
 
 /* Footer */
 footer {
-  background-color: #222;
+  background-color:none;
   color: #ccc;
   text-align: center;
   padding: 1em;
