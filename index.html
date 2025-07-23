@@ -1,46 +1,111 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>My Website</title>
+  <title>CAZUAL</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <header>
+  <!-- Intro stays at the top -->
+  <section id="intro">
     <h1>CAZUAL</h1>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#projects">Crochet</a>
-      <a href="#contact">Jewellery</a>
-      <a href="#fitness">Fitness</a>
-    </nav>
-  </header>
+  </section>
 
-  <main>
-    <section id="about">
-      <h2>CK'S BETS</h2>
-      <p>CAZ:1 , FINN: 0</p>
-    </section>
+<section id="stacked-text">
+  <div class="text-container">
+    <h2 id="caz">Hey – I'm Caz.</h2>
+    <h2 id="welcome">Welcome to CAZUAL</h2>
+  </div>
+</section>
 
-    <section id="crochet">
-      <h2>CROCHET</h2>
-      <ul>
-        <li>Project 1: </li>
-        <li>Project 2:</li>
-      </ul>
-    </section>
+  <!-- Main Content -->
+  <nav>
+    <a href="#about">ABOUT</a>
+    <a href="#project">PROJECTS</a>
+    <a href="#contact">CONTACT</a>
+  </nav>
 
-    <section id="contact">
-      <h2>CONTACT ME</h2>
-      <p>Email: cabkelly36@gmail.com</p>
-    </section>
-  </main>
+
+
+
+  <section class="section" id="about">
+    <h3>ABOUT</h3>
+    <p> Hey - I'm Caz. Welcome to CAZUAL - a vibe, a lifestyle, and a website. This is where I share all the wonderfully chaotic things I get up to. It’s a deeply philosophical exploration of the true meaning of life... as experienced by me! Welcome to my world of creativity and inspiration.</p>
+    <p> STAY CAZUAL! </p>
+  </section>
+
+  <section class="section" id="project">
+    <h3>PASSIONS</h3>
+    <ul>
+      <li>Crochet & Jewellery</li>
+      <li>Food & Friends </li>
+      <li>Fitness & Wellness</li>
+      <li>Travel & Exploring</li>
+    </ul>
+  </section>
+
+  <section class="section" id="contact">
+    <h3>CONTACT ME</h3>
+    <form class="contact-form">
+      <input type="text" placeholder="Name" required />
+      <input type="email" placeholder="Email" required />
+      <textarea rows="5" placeholder="Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
 
   <footer>
-    Copyright
-    &copy; 2025 Cazual - All Rights Reserved.
+    <p>&copy; 2025 CAZUAL. All rights reserved.</p>
   </footer>
+
+
+<script>
+
+function fadeOnScroll() {
+  const stackedSection = document.getElementById('stacked-text');
+  const caz = document.getElementById('caz');
+  const welcome = document.getElementById('welcome');
+
+  const sectionTop = stackedSection.getBoundingClientRect().top;
+  const sectionHeight = stackedSection.offsetHeight;
+  const windowHeight = window.innerHeight;
+
+  // Calculate how far we've scrolled relative to the stacked-text section only
+  // scrollY here means how far the bottom of the viewport is past the top of the section
+  const scrollY = windowHeight - sectionTop;
+
+  // progress = 0 when scrollY = 0 (bottom of viewport is at section top)
+  // progress = 1 when scrollY = sectionHeight (bottom of viewport has passed entire section)
+  let progress = scrollY / sectionHeight;
+
+  // Clamp progress between 0 and 1
+  progress = Math.min(Math.max(progress, 0), 1);
+
+  // Start fade effect after 75% scroll (0.75), normalized to 0-1 scale for the fade
+  const fadeStart = 0.9;
+
+  if (progress < fadeStart) {
+    // Before fade starts: show "Hey – I'm Caz", hide "Welcome"
+    caz.style.opacity = 1;
+    welcome.style.opacity = 0;
+  } else {
+    // Calculate fade progress normalized between fadeStart and 1
+    const fadeProgress = (progress - fadeStart) / (1 - fadeStart);
+
+    // Fade "Hey – I'm Caz" out from opacity 1 to 0
+    caz.style.opacity = 1 - fadeProgress;
+
+    // Fade "Welcome to CAZUAL" in from opacity 0 to 1
+    welcome.style.opacity = fadeProgress;
+  }
+}
+
+  window.addEventListener("scroll", fadeOnScroll);
+  window.addEventListener("load", fadeOnScroll);
+</script>
+
 
 </body>
 </html>
